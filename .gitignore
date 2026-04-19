@@ -1,0 +1,25 @@
+# Secrets & credentials
+terraform/terraform.tfvars
+*.pem
+.env
+**/.env
+
+# Terraform state (contient les secrets en clair !)
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+
+# ChromaDB (vectorstore locale — recréée au déploiement)
+chroma_db/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# MacOS / IDE
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,14 @@
+# ============================================================
+#  terraform.tfvars — copier en terraform.tfvars et remplir
+#  NE JAMAIS COMMITTER CE FICHIER SUR GIT
+# ============================================================
+
+aws_region         = "us-east-1"
+project_name       = "hermes-rag-bot"
+allowed_ssh_cidr   = "0.0.0.0/0"   # Remplace par ton IP/32 en prod
+
+# Token obtenu depuis @BotFather sur Telegram
+telegram_bot_token = "XXXXXXXXXX:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+# Clé API Groq — https://console.groq.com/keys
+groq_api_key       = "gsk_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
