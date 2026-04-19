@@ -174,3 +174,6 @@ hermes-rag-telegram/
 - **Credentials** : expire toutes les 4h, renouvelle depuis le Learner Lab
 - **Session Token** : obligatoire dans `~/.aws/credentials` pour AWS Academy
 - **Keypair Terraform** : la clé `.pem` est générée automatiquement par Terraform avec le provider `tls`
+
+
+#Pr : Noureddine GRASSA
