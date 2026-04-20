@@ -3,7 +3,16 @@
 Agent conversationnel RAG (Retrieval-Augmented Generation) déployé sur AWS EC2, propulsé par **Nous-Hermes-2** via **Groq API**, avec interface **Telegram**.
 
 ---
+## Infra déployée
 
+| Ressource | Valeur |
+|-----------|--------|
+| Elastic IP (fixe) | `3.213.183.12` |
+| S3 bucket | `hermes-rag-bot-docs-865ce9f4` |
+| Bot Telegram | `@ngrassa_bot` |
+| SSH | `ssh -i ~/Downloads/labsuser.pem ec2-user@3.213.183.12` |
+
+---
 ## 🏗️ Architecture
 
 ```
@@ -176,4 +185,11 @@ hermes-rag-telegram/
 - **Keypair Terraform** : la clé `.pem` est générée automatiquement par Terraform avec le provider `tls`
 
 
-#Pr : Noureddine GRASSA
+bot_logs_command = "ssh -i ../hermes-rag-bot-key.pem ec2-user@44.201.193.147 'sudo journalctl -u hermes-bot -f'"
+ec2_public_dns = "ec2-44-201-193-147.compute-1.amazonaws.com"
+ec2_public_ip = "44.201.193.147"
+s3_bucket_name = "hermes-rag-bot-docs-865ce9f4"
+s3_upload_command = "aws s3 sync ../docs/ s3://hermes-rag-bot-docs-865ce9f4/docs/"
+ssh_command = "ssh -i ../hermes-rag-bot-key.pem ec2-user@44.201.193.147"
+             
+                             #Pr : Noureddine GRASSA

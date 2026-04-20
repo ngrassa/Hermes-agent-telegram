@@ -2,7 +2,6 @@
 #  Hermes RAG Telegram Bot — Terraform (AWS Academy)
 #  Région : us-east-1  |  Instance : t3.large
 ##############################################################
-
 terraform {
   required_providers {
     aws = {
@@ -27,7 +26,6 @@ provider "aws" {
 data "aws_ami" "amazon_linux" {
   most_recent = true
   owners      = ["amazon"]
-
   filter {
     name   = "name"
     values = ["al2023-ami-*-x86_64"]
@@ -132,6 +130,19 @@ resource "aws_instance" "bot_server" {
 
   tags = {
     Name    = "${var.project_name}-server"
+    Project = var.project_name
+  }
+}
+
+##############################################################
+# Elastic IP — IP fixe qui survit aux redémarrages
+##############################################################
+resource "aws_eip" "bot_eip" {
+  instance = aws_instance.bot_server.id
+  domain   = "vpc"
+
+  tags = {
+    Name    = "${var.project_name}-eip"
     Project = var.project_name
   }
 }

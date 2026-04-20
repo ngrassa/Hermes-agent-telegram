@@ -13,7 +13,7 @@ APP_DIR="$SCRIPT_DIR/app"
 echo "📋 Récupération des infos de déploiement..."
 cd "$TERRAFORM_DIR"
 
-EC2_IP=$(terraform output -raw ec2_public_ip)
+EC2_IP=$(terraform output -raw elastic_ip)
 KEY_FILE="${HOME}/Downloads/labsuser.pem"
 
 # Vérification que la clé vockey existe
@@ -25,7 +25,7 @@ if [ ! -f "$KEY_FILE" ]; then
 fi
 chmod 400 "$KEY_FILE"
 S3_BUCKET=$(terraform output -raw s3_bucket_name)
-AWS_REGION=$(terraform output -raw ec2_public_ip > /dev/null 2>&1; terraform -chdir=. output -json | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('aws_region',{}).get('value','us-east-1'))" 2>/dev/null || echo "us-east-1")
+AWS_REGION=$(terraform output -raw elastic_ip > /dev/null 2>&1; terraform -chdir=. output -json | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('aws_region',{}).get('value','us-east-1'))" 2>/dev/null || echo "us-east-1")
 
 SSH_CMD="ssh -i $KEY_FILE -o StrictHostKeyChecking=no ec2-user@$EC2_IP"
 
